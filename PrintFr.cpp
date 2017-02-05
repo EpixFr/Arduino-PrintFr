@@ -26,7 +26,7 @@ Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ----------------------------------------------------------------
 @author Eric Gautheron alias EpixFr <epix[at]konectik.fr>
-version : 0.5
+version : 1.0
 ***************************************************************/
 
 #include "PrintFr.h"
@@ -43,13 +43,43 @@ PrintFr::PrintFr() {
   }
 
 /**
+  Méthode d'affichage d'un texte 1 paramètre  
+  Le paramètre de retour à la ligne est mis à vrai
+  Le paramètre de debug est mis à faux
+  @param string Texte // Texte qui sera transcodé
+**/
+void PrintFr::Affiche(String Texte) {
+  Transcodage(Texte,true,false,false);
+}
+
+/**
+  Méthode d'affichage d'un texte avec 2 paramètres
+  Le paramètre de debug est mis à faux
+  @param string Texte // Texte qui sera transcodé
+  @param boolean RetourLn // True : retour à la ligne
+**/
+void PrintFr::Affiche(String Texte,boolean RetourLn) {
+  Transcodage(Texte,RetourLn,false,false);
+}
+
+/**
+  Méthode d'affichage d'un texte avec 3 paramètres
+  @param string Texte // Texte qui sera transcodé
+  @param boolean RetourLn // True : retour à la ligne
+  @param boolean Debug // True : Debug activé
+**/
+void PrintFr::Affiche(String Texte,boolean RetourLn,boolean Debug) {
+ Transcodage(Texte,RetourLn,Debug,false);
+}
+
+/**
   Méthode d'écriture d'un texte 1 paramètre  
   Le paramètre de retour à la ligne est mis à vrai
   Le paramètre de debug est mis à faux
   @param string Texte // Texte qui sera transcodé
 **/
 void PrintFr::Ecrit(String Texte) {
-  Ecrit(Texte,true,false);
+  Transcodage(Texte,true,false,true);
 }
 
 /**
@@ -59,22 +89,32 @@ void PrintFr::Ecrit(String Texte) {
   @param boolean RetourLn // True : retour à la ligne
 **/
 void PrintFr::Ecrit(String Texte,boolean RetourLn) {
-  Ecrit(Texte,RetourLn,false);
+  Transcodage(Texte,RetourLn,false,true);
 }
 
 /**
   Méthode d'écriture d'un texte avec 3 paramètres
-  Le paramètre de debug est mis à faux
   @param string Texte // Texte qui sera transcodé
   @param boolean RetourLn // True : retour à la ligne
   @param boolean Debug // True : Debug activé
 **/
 void PrintFr::Ecrit(String Texte,boolean RetourLn,boolean Debug) {
+ Transcodage(Texte,RetourLn,Debug,true);
+}
+
+/**
+  Méthode privée de transcodage des caractères accentués
+  @param string Texte // Texte qui sera transcodé
+  @param boolean RetourLn // True : retour à la ligne
+  @param boolean Debug // True : Debug activé
+  @param boolean Ecriture // True : Ecrit lettre par lettre
+**/
+void PrintFr::Transcodage(String Texte,boolean RetourLn,boolean Debug,boolean Ecriture) {
   int Caract;
   //Parcours de l'ensemble des caractères du texte
   for (byte index=0; index < Texte.length(); index++) {
    if ((byte (Texte[index]) == 0xC3)|| (byte (Texte[index]) == 0xC2)) {
-    Caract = int(Texte[++index]);   
+    Caract = int(Texte[++index]);       
     //Transcodage du caractère en cours  
        switch (Caract) {
          case -92 : {Serial.print(char (228)); break;} // ä     
@@ -101,7 +141,10 @@ void PrintFr::Ecrit(String Texte,boolean RetourLn,boolean Debug) {
    } else {
     Serial.print(Texte[index]);
    }
+   //Gestion de l'écriture caractère par caractère
+    if (Ecriture) {delay(80);}
  }
  //Gestion du retour à la ligne
  if (RetourLn) { Serial.println(); }
 }
+

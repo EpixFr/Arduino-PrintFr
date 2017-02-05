@@ -26,7 +26,7 @@ Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ----------------------------------------------------------------
 @author Eric Gautheron alias EpixFr <epix[at]konectik.fr>
-version : 0.5
+version : 1.0
 ***************************************************************/
 
 #ifndef PrintFr_h
@@ -40,13 +40,28 @@ class PrintFr
     public :
       /* Constructeur */
       PrintFr();
-      /* Les Méthodes
-      Une méthode avec 3 surcharges pour la gestion 
-      des paramètres optionnels
+      /* 
+       *  Méthode d'affichage directe avec
+       *  3 surcharges pour la gestion des paramètres optionnels
+       *  
+      */
+      void Affiche(String Texte);
+      void Affiche(String Texte,boolean RetourLn);
+      void Affiche(String Texte,boolean RetourLn,boolean Debug);
+      /* 
+       *  Méthode d'écriture lettre par lettre avec
+       *  3 surcharges pour la gestion des paramètres optionnels
+       *  
       */
       void Ecrit(String Texte);
       void Ecrit(String Texte,boolean RetourLn);
       void Ecrit(String Texte,boolean RetourLn,boolean Debug);
+      
+    private :
+      /* 
+       *  Méthode privée de transcodage des caractères accentués
+       */
+      void Transcodage(String Texte,boolean RetourLn,boolean Debug,boolean Ecriture); 
 };
 
 #endif
