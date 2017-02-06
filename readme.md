@@ -14,15 +14,17 @@ Caractères supportés
 Méthodes
 ---------------
 
-### Affiche ###
-`Affiche(String Texte, boolean RetourLn, boolean Debug)` : Affiche directement le texte en transcodant les accents.  
+### *Affiche(String Texte, boolean RetourLn, boolean Debug)* ###
+Affiche directement le texte en transcodant les accents.  
+
 **Paramètres :** 
 - Texte : Texte qui sera transcodé [Obligatoire]
 - RetourLn : Booléen permettant de réaliser un retour à la ligne [Falcultatif - true : par défaut]
 - Debug : Booléen permettant de passer en mode Debug [Falcultatif - false : par défaut]
 
-### Ecrit ###
-`Ecrit(String Texte, boolean RetourLn, boolean Debug)` : Ecriture lettre par lettre du texte transcodé. 
+### *Ecrit(String Texte, boolean RetourLn, boolean Debug)* ###
+Ecriture lettre par lettre du texte transcodé. 
+
 **Paramètres :** 
 - Texte : Texte qui sera transcodé [Obligatoire]
 - RetourLn : Booléen permettant de réaliser un retour à la ligne [Falcultatif - true : par défaut]
@@ -32,20 +34,18 @@ Méthodes
 Exemple d'utilisation
 ---------------------
 
-        /* Création de l'instance Message de type PrintFr */
         PrintFr Message;
-        /* Ecriture d'un message sans paramètre optionnel */
         Message.Ecrit("Ecriture avec des caratères accentués.");
-        /* Affichage d'un message en obligeant le retour à la ligne */
         Message.Affiche("Caractères pris en charge : ä â à ç ë ê é è ï î ö ô ü û ù µ °", true);
-        /* Ecriture d'un message sans retour à la ligne avec la gestion du debug */
         Message.Affiche("Debugage de caractères accentués avec température en °C.", true,true);
+
+Plus d'informations dans le fichier d'exemple.
 
 Installation
 ------------
 Téléchargez [la dernière version de PrintFr](https://github.com/EpixFr/Arduino-PrintFr/releases).  
  Décompactez l'archive dans le répertoire des bibliothèques de votre Arduino, généralement dans `C:\Program Files (x86)\Arduino\libraries` .
- 
+
 
 Licence GNU/GPLv2.1
 --------------------
