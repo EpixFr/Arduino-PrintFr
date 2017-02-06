@@ -26,7 +26,7 @@ Free Software Foundation, Inc.,
 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 ----------------------------------------------------------------
 @author Eric Gautheron alias EpixFr <epix[at]konectik.fr>
-version : 1.0
+version : 1.1
 ***************************************************************/
 
 #ifndef PrintFr_h
