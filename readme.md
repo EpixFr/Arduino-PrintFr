@@ -43,8 +43,10 @@ Plus d'informations dans le fichier d'exemple.
 
 Installation
 ------------
-Téléchargez [la dernière version de PrintFr](https://github.com/EpixFr/Arduino-PrintFr/releases).  
- Décompactez l'archive dans le répertoire des bibliothèques de votre Arduino, généralement dans `C:\Program Files (x86)\Arduino\libraries` .
+1. Téléchargez [la dernière version de PrintFr](https://github.com/EpixFr/Arduino-PrintFr/releases).  
+2. Ouvrez l'IDE d'Arduino, puis Menu Croquis > Inclure une bibliothèque > Ajouter une bibliothèque .ZIP et choisissez le fichier que vous venez de télécharger.
+3. Vous retrouvez maintenant la bibliothèque dans la catégorie "Contributed bibliothèques"
+4. Vous pouvez également accéder à l'exemple fourni en passant par le Menu Fichier > Exemples > PrintFr > AffichageTexte
 
 
 Licence GNU/GPLv2.1
