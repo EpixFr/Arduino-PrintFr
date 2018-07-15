@@ -6,7 +6,7 @@
 # Library (KEYWORD1)
 #######################################
 
-PrintFr	KEYWORD1	PrintFr
+PrintFr	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
